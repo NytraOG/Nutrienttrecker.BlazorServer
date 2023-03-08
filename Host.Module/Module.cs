@@ -1,50 +1,55 @@
-﻿using System.ComponentModel;
-using DevExpress.ExpressApp;
+﻿using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.ConditionalAppearance;
+using DevExpress.ExpressApp.Dashboards;
 using DevExpress.ExpressApp.DC;
-using DevExpress.Persistent.Base;
-using DevExpress.Persistent.BaseImpl;
-using DevExpress.Persistent.BaseImpl.PermissionPolicy;
-using DevExpress.ExpressApp.Model;
-using DevExpress.ExpressApp.Actions;
-using DevExpress.ExpressApp.Editors;
+using DevExpress.ExpressApp.Objects;
+using DevExpress.ExpressApp.Office;
+using DevExpress.ExpressApp.ReportsV2;
+using DevExpress.ExpressApp.Security;
+using DevExpress.ExpressApp.SystemModule;
 using DevExpress.ExpressApp.Updating;
-using DevExpress.ExpressApp.Model.Core;
-using DevExpress.ExpressApp.Model.DomainLogics;
-using DevExpress.ExpressApp.Model.NodeGenerators;
-using DevExpress.Xpo;
+using DevExpress.ExpressApp.Validation;
 using DevExpress.ExpressApp.Xpo;
+using DevExpress.Persistent.BaseImpl;
+using Updater = Host.Module.DatabaseUpdate.Updater;
 
 namespace Host.Module;
 
 // For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.ModuleBase.
-public sealed class HostModule : ModuleBase {
-    public HostModule() {
-		// 
-		// HostModule
-		// 
-		AdditionalExportedTypes.Add(typeof(DevExpress.Persistent.BaseImpl.ModelDifference));
-		AdditionalExportedTypes.Add(typeof(DevExpress.Persistent.BaseImpl.ModelDifferenceAspect));
-        AdditionalExportedTypes.Add(typeof(DevExpress.Persistent.BaseImpl.BaseObject));
-        AdditionalExportedTypes.Add(typeof(DevExpress.Persistent.BaseImpl.FileData));
-        AdditionalExportedTypes.Add(typeof(DevExpress.Persistent.BaseImpl.FileAttachmentBase));
-		RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.SystemModule.SystemModule));
-		RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Security.SecurityModule));
-		RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule));
-		RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.ConditionalAppearance.ConditionalAppearanceModule));
-		RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Dashboards.DashboardsModule));
-		RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Office.OfficeModule));
-		RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.ReportsV2.ReportsModuleV2));
-		RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Validation.ValidationModule));
+public sealed class HostModule : ModuleBase
+{
+    public HostModule()
+    {
+        //
+        // HostModule
+        //
+        AdditionalExportedTypes.Add(typeof(ModelDifference));
+        AdditionalExportedTypes.Add(typeof(ModelDifferenceAspect));
+        AdditionalExportedTypes.Add(typeof(BaseObject));
+        AdditionalExportedTypes.Add(typeof(FileData));
+        AdditionalExportedTypes.Add(typeof(FileAttachmentBase));
+        RequiredModuleTypes.Add(typeof(SystemModule));
+        RequiredModuleTypes.Add(typeof(SecurityModule));
+        RequiredModuleTypes.Add(typeof(BusinessClassLibraryCustomizationModule));
+        RequiredModuleTypes.Add(typeof(ConditionalAppearanceModule));
+        RequiredModuleTypes.Add(typeof(DashboardsModule));
+        RequiredModuleTypes.Add(typeof(OfficeModule));
+        RequiredModuleTypes.Add(typeof(ReportsModuleV2));
+        RequiredModuleTypes.Add(typeof(ValidationModule));
+        RequiredModuleTypes.Add(typeof(Domain.Module));
     }
-    public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
-        ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);
-        return new ModuleUpdater[] { updater };
+
+    public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB)
+    {
+        ModuleUpdater updater = new Updater(objectSpace, versionFromDB);
+        return new[] { updater };
     }
-    public override void Setup(XafApplication application) {
-        base.Setup(application);
-        // Manage various aspects of the application UI and behavior at the module level.
-    }
-    public override void CustomizeTypesInfo(ITypesInfo typesInfo) {
+
+    public override void Setup(XafApplication application) => base.Setup(application);
+
+    // Manage various aspects of the application UI and behavior at the module level.
+    public override void CustomizeTypesInfo(ITypesInfo typesInfo)
+    {
         base.CustomizeTypesInfo(typesInfo);
         CalculatedPersistentAliasHelper.CustomizeTypesInfo(typesInfo);
     }

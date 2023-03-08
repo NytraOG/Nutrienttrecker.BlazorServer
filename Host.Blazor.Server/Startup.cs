@@ -14,6 +14,7 @@ using System.Security.Principal;
 using System.Security.Claims;
 using Microsoft.Identity.Web;
 using DevExpress.ExpressApp.Core;
+using Domain.Entities.Security;
 
 namespace Host.Blazor.Server;
 
@@ -71,13 +72,12 @@ public class Startup {
                 .AddNonPersistent();
             builder.Security
                 .UseIntegratedMode(options => {
-                    options.RoleType = typeof(PermissionPolicyRole);
+                    options.RoleType = typeof(ApplicationRole);
                     // ApplicationUser descends from PermissionPolicyUser and supports the OAuth authentication. For more information, refer to the following topic: https://docs.devexpress.com/eXpressAppFramework/402197
                     // If your application uses PermissionPolicyUser or a custom user type, set the UserType property as follows:
-                    options.UserType = typeof(Host.Module.BusinessObjects.ApplicationUser);
+                    options.UserType = typeof(ApplicationUser);
                     // ApplicationUserLoginInfo is only necessary for applications that use the ApplicationUser user type.
                     // If you use PermissionPolicyUser or a custom user type, comment out the following line:
-                    options.UserLoginInfoType = typeof(Host.Module.BusinessObjects.ApplicationUserLoginInfo);
                     options.UseXpoPermissionsCaching();
                 })
                 .AddPasswordAuthentication(options => {
