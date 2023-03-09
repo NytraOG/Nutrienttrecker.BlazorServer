@@ -1,7 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application>
+  <BOModel>
+    <Class Name="Domain.Entities.Gegessenes" ImageName="CleanFood.svg" />
+    <Class Name="Domain.Entities.Gericht" ImageName="Gericht.svg" />
+    <Class Name="Domain.Entities.Nahrungsmittel" ImageName="CleanFood.svg" />
+    <Class Name="Domain.Entities.Tag" ImageName="Tag.svg" />
+    <Class Name="Domain.Entities.Zutat" ImageName="CleanFood.svg" />
+  </BOModel>
   <NavigationItems NavigationStyle="Accordion">
+    <Items>
+      <Item Id="Kalender" Caption="Kalender" ViewId="" Index="0" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Tage" Caption="Tage" ViewId="Tag_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Stammdaten" Caption="Stammdaten" Index="10" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Nahrungsmittel" Caption="Nahrungsmittel" ViewId="Nahrungsmittel_ListView" Index="0" IsNewNode="True" />
+          <Item Id="Gerichte" Caption="Gerichte" Index="10" ViewId="Gericht_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Reports" Removed="True" />
+    </Items>
   </NavigationItems>
-  <Views DefaultListEditor="DevExpress.ExpressApp.Blazor.Editors.DxGridListEditor">
-  </Views>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="22.2.4.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views DefaultListEditor="DevExpress.ExpressApp.Blazor.Editors.DxGridListEditor" />
 </Application>

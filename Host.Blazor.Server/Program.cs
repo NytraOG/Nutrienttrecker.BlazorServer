@@ -1,8 +1,11 @@
 ﻿using System.Reflection;
+using CoOrga.SpaceManagement;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Blazor.DesignTime;
 using DevExpress.ExpressApp.Design;
 using DevExpress.ExpressApp.Utils;
+using DevExpress.Persistent.BaseImpl;
+using Domain.Entities;
 
 namespace Host.Blazor.Server;
 
@@ -18,6 +21,9 @@ public class Program : IDesignTimeApplicationFactory
 
     public static int Main(string[] args)
     {
+
+        MachMigrations();
+
         if (ContainsArgument(args, "help") || ContainsArgument(args, "h"))
         {
             Console.WriteLine("Updates the database when its version does not match the application's version.");
@@ -48,6 +54,19 @@ public class Program : IDesignTimeApplicationFactory
         }
 
         return 0;
+    }
+
+    private static void MachMigrations()
+    {
+        var types = typeof(BaseEntity).Assembly
+                                      .GetTypes()
+                                      .Union(typeof(FileData).Assembly.GetTypes())
+                                      .ToList();
+
+        //var connectionString = "Integrated Security=SSPI;Pooling=false;Data Source=DESKTOP-7FA7F9C\\MSSQLSERVER2019;Initial Catalog=Nutrienttrecker_local";
+        var connectionString = "User Id=dbo954319730;Password=cG!H3n5XMy6EVfu;Pooling=false;Data Source=db954319730.hosting-data.io;Initial Catalog=db954319730";
+
+        DatabaseOperations.RecreateDatabase(connectionString, types);
     }
 
     public static IHostBuilder CreateHostBuilder(string[] args) => Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
