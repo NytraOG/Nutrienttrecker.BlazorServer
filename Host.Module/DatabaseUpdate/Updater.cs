@@ -1,11 +1,15 @@
-﻿using DevExpress.ExpressApp;
+﻿using System.Reflection;
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Security;
 using DevExpress.ExpressApp.SystemModule;
 using DevExpress.ExpressApp.Updating;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
+using Domain.Entities;
 using Domain.Entities.Security;
+using Host.Module.DatabaseUpdate.Data;
+using Newtonsoft.Json;
 
 namespace Host.Module.DatabaseUpdate;
 
@@ -19,6 +23,46 @@ public class Updater : ModuleUpdater
     {
         base.UpdateDatabaseAfterUpdateSchema();
 
+        SeedDefaultApplicationSettings();
+        //SeedNahrungsmittel();
+    }
+
+    private void SeedNahrungsmittel()
+    {
+        var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+        if (basePath is null)
+            throw new DirectoryNotFoundException("Directory weg :C");
+
+        var localPath = new Uri(basePath).LocalPath;
+
+        var dataPath = Path.Combine(localPath, "DatabaseUpdate", "Data");
+
+        var file     = Directory.GetFiles(dataPath, "Nahrungsmittel.json")[0];
+        var content  = File.ReadAllText(file);
+
+        var nahrungsmittelModels = JsonConvert.DeserializeObject<List<NahrungsmittelModel>>(content);
+
+        foreach (var model in nahrungsmittelModels)
+        {
+            var filedata       = ObjectSpace.CreateObject<FileData>();
+            filedata.Content  = model.Content;
+            filedata.FileName = model.FileName;
+
+            var nahrungsmittel = ObjectSpace.CreateObject<Nahrungsmittel>();
+            nahrungsmittel.Name    = model.Name;
+            nahrungsmittel.Carbs   = model.Carbs;
+            nahrungsmittel.Kcal    = model.Kcal;
+            nahrungsmittel.Fett    = model.Fat;
+            nahrungsmittel.Protein = model.Protein;
+            nahrungsmittel.Datei   = filedata;
+        }
+
+        ObjectSpace.CommitChanges();
+    }
+
+    private void SeedDefaultApplicationSettings()
+    {
         var defaultRole = CreateDefaultRole();
 
         var userAdmin = ObjectSpace.FirstOrDefault<ApplicationUser>(u => u.UserName == "Admin");
@@ -42,6 +86,7 @@ public class Updater : ModuleUpdater
 
         adminRole.IsAdministrative = true;
         userAdmin.Roles.Add(adminRole);
+
         ObjectSpace.CommitChanges();
     }
 

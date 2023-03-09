@@ -16,6 +16,7 @@ public static class FileDataHelper
         datei.SaveToStream(memoryStream);
         memoryStream.Seek(0, SeekOrigin.Begin);
         var retVal = Image.FromStream(memoryStream);
+
         return retVal;
     }
 

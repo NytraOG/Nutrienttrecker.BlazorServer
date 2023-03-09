@@ -22,7 +22,7 @@ public class Program : IDesignTimeApplicationFactory
     public static int Main(string[] args)
     {
 
-        MachMigrations();
+        //MachMigrations();
 
         if (ContainsArgument(args, "help") || ContainsArgument(args, "h"))
         {
@@ -63,8 +63,8 @@ public class Program : IDesignTimeApplicationFactory
                                       .Union(typeof(FileData).Assembly.GetTypes())
                                       .ToList();
 
-        //var connectionString = "Integrated Security=SSPI;Pooling=false;Data Source=DESKTOP-7FA7F9C\\MSSQLSERVER2019;Initial Catalog=Nutrienttrecker_local";
-        var connectionString = "User Id=dbo954319730;Password=cG!H3n5XMy6EVfu;Pooling=false;Data Source=db954319730.hosting-data.io;Initial Catalog=db954319730";
+        var connectionString = "Integrated Security=SSPI;Pooling=false;Data Source=DESKTOP-7FA7F9C\\MSSQLSERVER2019;Initial Catalog=Nutrienttrecker_local";
+        //var connectionString = "User Id=dbo954319730;Password=cG!H3n5XMy6EVfu;Pooling=false;Data Source=db954319730.hosting-data.io;Initial Catalog=db954319730";
 
         DatabaseOperations.RecreateDatabase(connectionString, types);
     }

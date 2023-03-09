@@ -19,19 +19,19 @@ public class Nahrungsmittel : BaseEntity
 
     public Nahrungsmittel(Session session) : base(session) { }
 
-    private Lazy<Image> LazyThumbnail => new(ThumbnailAusBildErstellen, true);
-    private Lazy<Image> LazyBild      => new(BildAusDateiErstellen, true);
+    // private Lazy<Image> LazyThumbnail => new(ThumbnailAusBildErstellen, true);
+    // private Lazy<Image> LazyBild      => new(BildAusDateiErstellen, true);
 
-    [NonPersistent]
-    [VisibleInDetailView(false)]
-    [XafDisplayName("Thumbnail")]
-    public Image Thumbnail => LazyThumbnail.Value;
-
-    [NonPersistent]
-    [VisibleInListView(false)]
-    [VisibleInDetailView(true)]
-    [XafDisplayName("Abbildung")]
-    public Image Bild => LazyBild.Value;
+    // [NonPersistent]
+    // [VisibleInDetailView(false)]
+    // [XafDisplayName("Thumbnail")]
+    // public Image Thumbnail => LazyThumbnail.Value;
+    //
+    // [NonPersistent]
+    // [VisibleInListView(false)]
+    // [VisibleInDetailView(true)]
+    // [XafDisplayName("Abbildung")]
+    // public Image Bild => LazyBild.Value;
 
     public string Name
     {
@@ -80,9 +80,9 @@ public class Nahrungsmittel : BaseEntity
     [Association]
     public XPCollection<Zutat> Zutaten => GetCollection<Zutat>();
 
-    private Image BildAusDateiErstellen() => FileDataHelper.ErstelleBildAusDatei(Datei);
-
-    private Image ThumbnailAusBildErstellen() => FileDataHelper.ErstelleThumbnailAusBild(LazyBild);
+    // private Image BildAusDateiErstellen() => FileDataHelper.ErstelleBildAusDatei(Datei);
+    //
+    // private Image ThumbnailAusBildErstellen() => FileDataHelper.ErstelleThumbnailAusBild(LazyBild);
 
     public override void AfterConstruction()
     {
