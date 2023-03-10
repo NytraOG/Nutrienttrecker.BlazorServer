@@ -32,9 +32,9 @@ public sealed class HostModule : ModuleBase
         RequiredModuleTypes.Add(typeof(SecurityModule));
         RequiredModuleTypes.Add(typeof(BusinessClassLibraryCustomizationModule));
         RequiredModuleTypes.Add(typeof(ConditionalAppearanceModule));
-        RequiredModuleTypes.Add(typeof(DashboardsModule));
-        RequiredModuleTypes.Add(typeof(OfficeModule));
-        RequiredModuleTypes.Add(typeof(ReportsModuleV2));
+        // RequiredModuleTypes.Add(typeof(DashboardsModule));
+        // RequiredModuleTypes.Add(typeof(OfficeModule));
+        // RequiredModuleTypes.Add(typeof(ReportsModuleV2));
         RequiredModuleTypes.Add(typeof(ValidationModule));
         RequiredModuleTypes.Add(typeof(Domain.Module));
     }

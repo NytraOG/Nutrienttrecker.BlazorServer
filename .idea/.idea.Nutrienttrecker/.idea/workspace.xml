@@ -6,23 +6,14 @@
     <projectFile profileName="IIS Express">Host.Blazor.Server/Host.Blazor.Server.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0d15b639-fc93-4555-9787-81d553513c57" name="Changes" comment="DbRecreateKRams">
-      <change afterPath="$PROJECT_DIR$/DataSnacker/Data/Files.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataSnacker/Data/Gerichte.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataSnacker/DataSnacker.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataSnacker/FileDataModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataSnacker/GerichtModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataSnacker/NahrungsmittelModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataSnacker/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Utils/Data/StammdatenSeeder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Host.Module/DatabaseUpdate/Data/Nahrungsmittel.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Host.Module/DatabaseUpdate/Data/NahrungsmittelModel.cs" afterDir="false" />
+    <list default="true" id="0d15b639-fc93-4555-9787-81d553513c57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nutrienttrecker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nutrienttrecker/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Utils/FileDataHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Utils/FileDataHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/Tag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Tag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Host.Blazor.Server/Host.Blazor.Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Host.Blazor.Server/Host.Blazor.Server.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Host.Blazor.Server/Model.xafml" beforeDir="false" afterPath="$PROJECT_DIR$/Host.Blazor.Server/Model.xafml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Host.Blazor.Server/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Host.Blazor.Server/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Host.Module/DatabaseUpdate/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Host.Module/DatabaseUpdate/Updater.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Host.Module/Host.Module.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Host.Module/Host.Module.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrienttrecker.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Nutrienttrecker.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Host.Blazor.Server/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Host.Blazor.Server/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Host.Module/Module.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Host.Module/Module.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +33,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6e37c146b534612a7401a4e2d039f1552468/a7/7b987927/FileDataHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e70fa682d906424aa56fda524c5943bf23e468/67/76d6b474/XPDictionary.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/179790d2c13e3bbd7bf245d34da7ffa022abad5ac42dd3dd40c0542b14c76e/SqlConnection.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/869cabb92e82cc3e3fd32a575042337f9bdd2aed2413fbcc4fbdb3a44d1172/Renderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8ce284dd96769341c0597fc5532bc853df4618b5e61ce04a44ca86b6c1a5/Lazy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b8c56d5b036f2a6fe79726c905c982bb3e77beec6526d3695d5daf1286da/SqlMapper.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -114,8 +106,11 @@
       </method>
     </configuration>
     <configuration name="IONOS Publish" type="DotNetPublishAndUpload" factoryName="Publish to custom server">
-      <riderPublish configuration="Release" platform="Any CPU" runtime="Portable" server_id="c6bd6c64-0cdc-441e-8019-d95ce1d5da79" serverName="IONOS Publish" target_framework="net6.0" uuid_high="8638931856054242684" uuid_low="-7558677364447661317" />
-      <method v="2" />
+      <riderPublish configuration="Release" platform="Any CPU" runtime="win-x86" self_contained="true" server_id="c6bd6c64-0cdc-441e-8019-d95ce1d5da79" serverName="IONOS Publish" target_framework="net6.0" uuid_high="8638931856054242684" uuid_low="-7558677364447661317" />
+      <method v="2">
+        <option name="CleanSolution" enabled="true" />
+        <option name="Build Solution" enabled="true" />
+      </method>
     </configuration>
     <configuration name="Host.Blazor.Server" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Host.Blazor.Server/Host.Blazor.Server.csproj" />
@@ -166,7 +161,7 @@
       <updated>1678271121738</updated>
       <workItem from="1678271123975" duration="1427000" />
       <workItem from="1678272664728" duration="2082000" />
-      <workItem from="1678351104524" duration="8948000" />
+      <workItem from="1678351104524" duration="19274000" />
     </task>
     <task id="LOCAL-00001" summary="xafBlazor Init">
       <created>1678271174103</created>
@@ -189,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678353672308</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="dataseedimportkrams">
+      <created>1678360792669</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678360792669</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,7 +205,8 @@
     <MESSAGE value="xafBlazor Init" />
     <MESSAGE value="menge Holz" />
     <MESSAGE value="DbRecreateKRams" />
-    <option name="LAST_COMMIT_MESSAGE" value="DbRecreateKRams" />
+    <MESSAGE value="dataseedimportkrams" />
+    <option name="LAST_COMMIT_MESSAGE" value="dataseedimportkrams" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -112,7 +112,7 @@ public class Tag : BaseEntity
     [MemberDesignTimeVisibility(false)]
     public double TodaysCalorieIntake => User.IntakeConfigurations
                                              .First(c => c.Active)
-                                             .GetCalorieIntakeByDayOfWeek(DateTime.Now.DayOfWeek);
+                                             .GetCalorieIntakeByDayOfWeek(Datum.DayOfWeek);
 
     [Association]
     public XPCollection<Gegessenes> GegesseneDinge => GetCollection<Gegessenes>();
