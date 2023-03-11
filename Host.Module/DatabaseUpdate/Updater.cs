@@ -38,14 +38,17 @@ public class Updater : ModuleUpdater
 
         var dataPath = Path.Combine(localPath, "DatabaseUpdate", "Data");
 
-        var file     = Directory.GetFiles(dataPath, "Nahrungsmittel.json")[0];
-        var content  = File.ReadAllText(file);
+        var file    = Directory.GetFiles(dataPath, "Nahrungsmittel.json")[0];
+        var content = File.ReadAllText(file);
 
         var nahrungsmittelModels = JsonConvert.DeserializeObject<List<NahrungsmittelModel>>(content);
 
         foreach (var model in nahrungsmittelModels)
         {
-            var filedata       = ObjectSpace.CreateObject<FileData>();
+            if (ObjectSpace.GetObjectsQuery<Nahrungsmittel>().Any(n => n.Name == model.Name))
+                continue;
+
+            var filedata = ObjectSpace.CreateObject<FileData>();
             filedata.Content  = model.Content;
             filedata.FileName = model.FileName;
 

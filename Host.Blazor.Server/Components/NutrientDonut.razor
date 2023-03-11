@@ -1,0 +1,52 @@
+﻿@using DevExpress.ExpressApp
+@using Domain.Entities
+<DxPieChart Data="@Gegessenes"
+            Diameter="diameter"
+            InnerDiameter="innerDiameter"
+            T="Gegessenes">
+    <DxPieChartSeries T="Gegessenes"
+                      TArgument="string"
+                      TValue="double"
+                      ArgumentField="si => si.Nahrungsmittel.Name"
+                      ValueField="si => si.Menge"
+                      SummaryMethod="Enumerable.Sum">
+        <DxChartSeriesLabel Visible="showLabels"
+                            Position="labelPosition"
+                            Format="ChartElementFormat.Thousands(1)">
+            <DxChartSeriesLabelConnector Visible="true"/>
+        </DxChartSeriesLabel>
+    </DxPieChartSeries>
+    <DxChartTooltip Enabled="true"
+                    Position="RelativePosition.Outside">
+        <div style="margin: 0.75rem">
+            <div class="fw-bold">@context.Point.Argument</div>
+            <div>Menge: @($"{context.Point.Value}g")</div>
+        </div>
+    </DxChartTooltip>
+    <DxChartTitle Text="Nutrient distribution">
+        <DxChartSubTitle Text="Total"/>
+    </DxChartTitle>
+    <DxChartLegend HorizontalAlignment="HorizontalAlignment.Center"
+                   VerticalAlignment="VerticalEdge.Bottom"
+                   Position="RelativePosition.Outside"
+                   Orientation="Orientation.Horizontal"/>
+</DxPieChart>
+
+@code{
+
+    [Parameter]
+    public IObjectSpace ObjectSpace { get; set; }
+
+    readonly bool showLabels = true;
+    readonly RelativePosition labelPosition = RelativePosition.Outside;
+    readonly double? diameter = null;
+    readonly double innerDiameter = 0.5;
+    IEnumerable<Gegessenes> Gegessenes { get; set; }
+
+    protected override void OnInitialized()
+    {
+        var kek = ObjectSpace.GetObjectsQuery<Gegessenes>();
+        Gegessenes = kek;
+    }
+
+}

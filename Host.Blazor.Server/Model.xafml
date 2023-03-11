@@ -27,6 +27,11 @@
     <SchemaModule Name="SystemModule" Version="22.2.4.0" IsNewNode="True" />
   </SchemaModules>
   <Views DefaultListEditor="DevExpress.ExpressApp.Blazor.Editors.DxGridListEditor">
+    <DetailView Id="AppendKcalViewModel_DetailView">
+      <Items>
+        <PropertyEditor Id="Kcal" DisplayFormat="" EditMask="" />
+      </Items>
+    </DetailView>
     <DetailView Id="Gegessenes_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
@@ -121,22 +126,36 @@
       </Layout>
     </DetailView>
     <DetailView Id="Tag_DetailView">
+      <Items>
+        <ControlDetailItem Id="NutrientDonut" ControlTypeName="Host.Blazor.Server.Components.Adapter.NutrientDonuAdapter" IsNewNode="True" />
+      </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="19.9288256227758">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
             <LayoutGroup Id="Tag" RelativeSize="100" ShowCaption="False" Direction="Vertical">
-              <LayoutGroup Id="Tag_col1" RelativeSize="100">
-                <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="0" RelativeSize="43.45238095238095" Caption="Details" IsNewNode="True">
-                  <LayoutItem Id="Datum" ViewItem="Datum" Index="0" RelativeSize="25" IsNewNode="True" />
-                  <LayoutItem Id="User" ViewItem="User" Index="1" RelativeSize="25" IsNewNode="True" />
-                  <LayoutItem Id="Einwaage" ViewItem="Einwaage" Index="2" RelativeSize="50" IsNewNode="True" />
+              <LayoutGroup Id="Tag_col1" RelativeSize="100" Direction="Horizontal" Caption="Tag_col1">
+                <LayoutGroup Id="Auto191cdba3-d456-429a-8b34-45f98fa1cf77" ShowCaption="False" Caption="Auto191cdba3-d456-429a-8b34-45f98fa1cf77(5)" Index="0" RelativeSize="56.03290676416819" IsNewNode="True">
+                  <LayoutGroup Id="Item2" ShowCaption="True" Caption="Details" CaptionLocation="Top" Direction="Horizontal" Index="0" RelativeSize="8.957055214723926" IsNewNode="True">
+                    <LayoutItem Id="Datum" ViewItem="Datum" Index="0" RelativeSize="40.939597315436245" IsNewNode="True" />
+                    <LayoutItem Id="User" ViewItem="User" Index="1" RelativeSize="36.07382550335571" IsNewNode="True" />
+                    <LayoutItem Id="Einwaage" ViewItem="Einwaage" Index="2" RelativeSize="22.986577181208055" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Item1" ShowCaption="True" Caption="Nutrients" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="10.920245398773005" IsNewNode="True">
+                    <LayoutGroup Id="Auto941ec20a-d131-443f-9c5b-6e528f908338" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="50" IsNewNode="True">
+                      <LayoutItem Id="GesamtKcal" ViewItem="GesamtKcal" Index="0" RelativeSize="23.154362416107382" IsNewNode="True" />
+                      <LayoutItem Id="GesamtProtein" ViewItem="GesamtProtein" Index="1" RelativeSize="25.838926174496645" IsNewNode="True" />
+                      <LayoutItem Id="GesamtCarbs" ViewItem="GesamtCarbs" Index="2" RelativeSize="25" IsNewNode="True" />
+                      <LayoutItem Id="GesamtFett" ViewItem="GesamtFett" Index="3" RelativeSize="26.006711409395972" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutItem Id="FreieKcal" ViewItem="FreieKcal" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="GegesseneDinge_Group" ShowCaption="True" Caption="Gegessene Dinge" Index="2" RelativeSize="80.12269938650307" IsNewNode="True">
+                    <LayoutItem Id="GegesseneDinge" ViewItem="GegesseneDinge" Index="0" RelativeSize="100" IsNewNode="True" />
+                  </LayoutGroup>
                 </LayoutGroup>
-                <LayoutItem Id="FreieKcal" ViewItem="FreieKcal" Index="1" RelativeSize="14.285714285714286" IsNewNode="True" />
-                <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="2" RelativeSize="42.26190476190476" Caption="Nutrients" IsNewNode="True">
-                  <LayoutItem Id="GesamtKcal" ViewItem="GesamtKcal" Index="0" RelativeSize="25" IsNewNode="True" />
-                  <LayoutItem Id="GesamtProtein" ViewItem="GesamtProtein" Index="1" RelativeSize="24.90671641791045" IsNewNode="True" />
-                  <LayoutItem Id="GesamtCarbs" ViewItem="GesamtCarbs" Index="2" RelativeSize="25" IsNewNode="True" />
-                  <LayoutItem Id="GesamtFett" ViewItem="GesamtFett" Index="3" RelativeSize="25.09328358208955" IsNewNode="True" />
+                <LayoutGroup Id="Autof88b5d46-a6d0-4057-ad49-f5f2a648cbf9" ShowCaption="False" Caption="" Index="1" RelativeSize="43.96709323583181" IsNewNode="True">
+                  <LayoutItem Id="NutrientDonut" ViewItem="NutrientDonut" Index="0" RelativeSize="3.9263803680981595" IsNewNode="True" />
+                  <LayoutItem Id="Item3" Index="1" RelativeSize="96.07361963190183" IsNewNode="True" />
                 </LayoutGroup>
                 <LayoutItem Id="Datum" RelativeSize="23.880597014925375" Removed="True" />
                 <LayoutItem Id="Einwaage" RelativeSize="17.91044776119403" Removed="True" />
@@ -155,7 +174,7 @@
               <LayoutItem Id="ErstelltAm" Removed="True" />
             </LayoutGroup>
           </LayoutGroup>
-          <LayoutGroup Id="GegesseneDinge_Group" Direction="Vertical" RelativeSize="80.0711743772242">
+          <LayoutGroup Id="GegesseneDinge_Group" Direction="Vertical" RelativeSize="79.41176470588235" Removed="True">
             <LayoutItem Id="GegesseneDinge" RelativeSize="100" />
           </LayoutGroup>
         </LayoutGroup>
